@@ -1,5 +1,5 @@
 class Analyzers::CustomerPurchaseAnalyzer
-  def initialize(strategy = 'CategoryQuantityStrategy')
+  def initialize(strategy = 'Analyzers::Strategies::CategoryQuantityStrategy')
     @strategy = strategy.constantize.new
   end
 

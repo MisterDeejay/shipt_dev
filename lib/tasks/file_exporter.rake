@@ -16,4 +16,14 @@ namespace :file_exporter do
 
     puts "Output to #{args[:filename]} succesful"
   end
+
+  desc "Return output of products by category for every customer"
+  task :category_sales_totals, [:filename] => :environment do |t, args|
+    content = Analyzers::CustomerPurchaseAnalyzer.new.analyze
+
+    FileExporter.new(
+      content.to_json,
+      File.expand_path("../data/", __FILE__) << "/" << args[:filename]
+    ).export
+  end
 end

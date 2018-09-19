@@ -1,4 +1,4 @@
-class Analyzers::Strategies::CategoryQuantityStrategy
+class Analyzers::Strategies::CategoryQuantityStrategy < Analyzers::Strategies::BaseStrategy
   def initialize
     super(
       <<-EOF
@@ -15,7 +15,7 @@ class Analyzers::Strategies::CategoryQuantityStrategy
            EOF
     )
   end
-  
+
   def analyze
     ActiveRecord::Base.connection.execute(@query)
   end
